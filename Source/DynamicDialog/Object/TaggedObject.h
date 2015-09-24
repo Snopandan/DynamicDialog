@@ -20,6 +20,11 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
+
+private: 
+	UPROPERTY(EditAnywhere, Category = "Tags")
+	TArray<FString> ObjectTags;
+
 	
 	
 };
