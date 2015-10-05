@@ -21,10 +21,16 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
 
 
+	UFUNCTION(BlueprintPure, Category = "Tags")
+	bool HasBeenUsed();
+
+	UFUNCTION(BlueprintCallable, Category = "Tags")
+	void Use();
+
 private: 
 	UPROPERTY(EditAnywhere, Category = "Tags")
 	TArray<FString> ObjectTags;
 
-	
+	bool bHasBeenUsed = false;
 	
 };
