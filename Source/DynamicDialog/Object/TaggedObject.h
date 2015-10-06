@@ -2,8 +2,11 @@
 
 #pragma once
 
+#include "../DynamicDialog/Characters/DialogCharacter.h"
+
 #include "GameFramework/Actor.h"
 #include "TaggedObject.generated.h"
+
 
 UCLASS()
 class DYNAMICDIALOG_API ATaggedObject : public AActor
@@ -25,7 +28,7 @@ public:
 	bool HasBeenUsed();
 
 	UFUNCTION(BlueprintCallable, Category = "Tags")
-	void Use();
+	void Use(ADialogCharacter* user);
 
 private: 
 	UPROPERTY(EditAnywhere, Category = "Tags")

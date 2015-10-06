@@ -32,7 +32,7 @@ bool ATaggedObject::HasBeenUsed() {
 	return bHasBeenUsed;
 }
 
-void ATaggedObject::Use() {
+void ATaggedObject::Use(ADialogCharacter* user) {
 	bHasBeenUsed = true;
 }
 
