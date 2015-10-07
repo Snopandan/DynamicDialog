@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "../DynamicDialog/DialogSystem/DialogSystem.h"
 #include "../DynamicDialog/Characters/DialogCharacter.h"
 
 #include "GameFramework/Actor.h"

@@ -5,6 +5,8 @@
 #include "GameFramework/Character.h"
 #include "DialogCharacter.generated.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(DialogSystemLog, Log, All);
+
 UCLASS()
 class DYNAMICDIALOG_API ADialogCharacter : public ACharacter
 {
@@ -23,6 +25,10 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
+	virtual FString GetName() { return Name; }
+private:
+	UPROPERTY(EditAnywhere)
+	FString  Name;
 	
 	
 };

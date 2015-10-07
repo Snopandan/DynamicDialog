@@ -34,5 +34,6 @@ bool ATaggedObject::HasBeenUsed() {
 
 void ATaggedObject::Use(ADialogCharacter* user) {
 	bHasBeenUsed = true;
+	DialogSystem::Query(user);
 }
 
