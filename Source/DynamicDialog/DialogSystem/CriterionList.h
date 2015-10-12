@@ -12,6 +12,10 @@ public:
 	CriterionList();
 	~CriterionList();
 
+	void AddCriterion(Criterion::EKey Key);
+
+	Criterion* GetCriterion(int32 index);
+
 private:
 	TArray<Criterion*> Criteria;
 };

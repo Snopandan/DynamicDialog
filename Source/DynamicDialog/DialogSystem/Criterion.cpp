@@ -3,7 +3,11 @@
 #include "DynamicDialog.h"
 #include "Criterion.h"
 
-Criterion::Criterion()
+
+const FString Criterion::KeyNames[] = { TEXT("HP"), TEXT("ON_SEE"), TEXT("ON_USE") };
+
+Criterion::Criterion(EKey Key)
+	: Key(Key)
 {
 }
 

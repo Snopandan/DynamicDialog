@@ -10,3 +10,14 @@ CriterionList::CriterionList()
 CriterionList::~CriterionList()
 {
 }
+
+void CriterionList::AddCriterion(Criterion::EKey Key)
+{
+	Criteria.Add(new Criterion{Key});
+}
+
+
+Criterion* CriterionList::GetCriterion(int32 index)
+{
+	return Criteria[index];
+}

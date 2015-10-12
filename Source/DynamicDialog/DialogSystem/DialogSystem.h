@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "CriterionList.h"
+#include "Criterion.h"
 #include "../DynamicDialog/Characters/DialogCharacter.h"
 /**
  * 
@@ -12,5 +14,5 @@ public:
 	DialogSystem();
 	~DialogSystem();
 
-	static void Query(ADialogCharacter* character);
+	static void Query(ADialogCharacter* Character, CriterionList* Context);
 };

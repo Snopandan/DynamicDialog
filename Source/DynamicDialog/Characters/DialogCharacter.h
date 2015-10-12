@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "../DynamicDialog/DialogSystem/CriterionList.h"
+
 #include "GameFramework/Character.h"
 #include "DialogCharacter.generated.h"
 
@@ -29,6 +31,8 @@ public:
 private:
 	UPROPERTY(EditAnywhere)
 	FString  Name;
-	
+
+	CriterionList Memory;
+	CriterionList Status;
 	
 };

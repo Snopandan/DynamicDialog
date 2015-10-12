@@ -7,7 +7,25 @@
  */
 class DYNAMICDIALOG_API Criterion
 {
+
 public:
-	Criterion();
+
+
+	enum class EKey
+	{
+		HP,
+		ON_SEE,
+		ON_USE
+	};
+	static const FString KeyNames[];
+	
+
+	Criterion(EKey Key);
 	~Criterion();
+
+	EKey GetKey() { return Key; };
+
+private:
+	EKey Key;
+
 };

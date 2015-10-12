@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "CriterionList.h"
+
 /**
  * 
  */
@@ -10,4 +12,7 @@ class DYNAMICDIALOG_API FactDatabase
 public:
 	FactDatabase();
 	~FactDatabase();
+
+private:
+	CriterionList World;
 };

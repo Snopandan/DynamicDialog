@@ -34,6 +34,9 @@ bool ATaggedObject::HasBeenUsed() {
 
 void ATaggedObject::Use(ADialogCharacter* user) {
 	bHasBeenUsed = true;
-	DialogSystem::Query(user);
+
+	CriterionList Context;
+	Context.AddCriterion(Criterion::EKey::ON_USE);
+	DialogSystem::Query(user, &Context);
 }
 

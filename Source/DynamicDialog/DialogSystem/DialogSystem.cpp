@@ -13,8 +13,11 @@ DialogSystem::~DialogSystem()
 {
 }
 
-void DialogSystem::Query(ADialogCharacter* character) {
-	UE_LOG(DialogSystemLog, Log, TEXT("%s: Queried the Dialog System."), *character->GetName());
+void DialogSystem::Query(ADialogCharacter* Character, CriterionList* Context) {
+	
+	Criterion::EKey Key = Context->GetCriterion(0)->GetKey();
+	FString ContextName = Criterion::KeyNames[static_cast<int32>(Key)];
+	UE_LOG(DialogSystemLog, Log, TEXT("%s: Queried the Dialog System from %s context"), *Character->GetName(), *ContextName);
 
 
 }
