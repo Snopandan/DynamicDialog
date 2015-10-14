@@ -19,7 +19,7 @@ DialogSystem::DialogSystem()
 	rule2->Add(Criterion::EKey::CHARACTER, "Red");
 	RuleDb->AddRule(rule2);
 
-	Rule* rule3 = new Rule("I See Bird1");
+	Rule* rule3 = new Rule("I See Bird2");
 	rule3->Add(Criterion::EKey::ON_USE, "Bird2");
 	RuleDb->AddRule(rule3);
 
