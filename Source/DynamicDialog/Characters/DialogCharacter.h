@@ -3,11 +3,14 @@
 #pragma once
 
 #include "../DynamicDialog/DialogSystem/CriterionList.h"
+#include "../DynamicDialog/DialogSystem/DialogSystem.h"
+#include "../DynamicDialog/Object/TaggedObject.h"
+#include "../DynamicDialog/DialogSystem/Response.h"
 
 #include "GameFramework/Character.h"
 #include "DialogCharacter.generated.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(DialogSystemLog, Log, All);
+DECLARE_LOG_CATEGORY_EXTERN(DialogCharacterLog, Log, All);
 
 UCLASS()
 class DYNAMICDIALOG_API ADialogCharacter : public ACharacter
@@ -28,11 +31,17 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
 	virtual FString GetName() { return Name; }
+
+	UFUNCTION(BlueprintCallable, Category = "Tags")
+	virtual void UseObject(ATaggedObject* Obj);
 private:
 	UPROPERTY(EditAnywhere)
 	FString  Name;
 
+	DialogSystem Dialog;
 	CriterionList Memory;
 	CriterionList Status;
+
+	
 	
 };

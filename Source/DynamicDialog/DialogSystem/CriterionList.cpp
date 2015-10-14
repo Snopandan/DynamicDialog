@@ -11,13 +11,7 @@ CriterionList::~CriterionList()
 {
 }
 
-void CriterionList::AddCriterion(Criterion::EKey Key)
+void CriterionList::AddCriterion(Criterion::EKey Key, FString Value)
 {
-	Criteria.Add(new Criterion{Key});
-}
-
-
-Criterion* CriterionList::GetCriterion(int32 index)
-{
-	return Criteria[index];
+	Criteria.Add(new Criterion{ Key, Value });
 }

@@ -12,9 +12,10 @@ public:
 	CriterionList();
 	~CriterionList();
 
-	void AddCriterion(Criterion::EKey Key);
+	void AddCriterion(Criterion::EKey Key, FString Value);
 
-	Criterion* GetCriterion(int32 index);
+	Criterion* GetCriterion(int32 index) const { return Criteria[index]; };
+	int32 GetSize() const { return Criteria.Num(); }
 
 private:
 	TArray<Criterion*> Criteria;

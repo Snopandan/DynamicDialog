@@ -10,6 +10,7 @@ ATaggedObject::ATaggedObject()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	Name = "Default";
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 
 }
@@ -32,11 +33,7 @@ bool ATaggedObject::HasBeenUsed() {
 	return bHasBeenUsed;
 }
 
-void ATaggedObject::Use(ADialogCharacter* user) {
+void ATaggedObject::Use() {
 	bHasBeenUsed = true;
-
-	CriterionList Context;
-	Context.AddCriterion(Criterion::EKey::ON_USE);
-	DialogSystem::Query(user, &Context);
 }
 

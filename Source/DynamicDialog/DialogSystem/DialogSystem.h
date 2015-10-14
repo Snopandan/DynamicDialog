@@ -4,7 +4,12 @@
 
 #include "CriterionList.h"
 #include "Criterion.h"
-#include "../DynamicDialog/Characters/DialogCharacter.h"
+#include "../DynamicDialog/DialogSystem/RuleDatabase.h"
+#include "../DynamicDialog/DialogSystem/FactDatabase.h"
+#include "Rule.h"
+#include "Response.h"
+
+DECLARE_LOG_CATEGORY_EXTERN(DialogSystemLog, Log, All);
 /**
  * 
  */
@@ -14,5 +19,11 @@ public:
 	DialogSystem();
 	~DialogSystem();
 
-	static void Query(ADialogCharacter* Character, CriterionList* Context);
+	Response Query(CriterionList* Context, CriterionList* Character, CriterionList* Memory);
+
+private:
+
+	bool MatchRule(Rule* rule, CriterionList* Context, CriterionList* Character, CriterionList* Memory);
+	RuleDatabase* RuleDb;
+	FactDatabase* FactDb;
 };

@@ -2,10 +2,6 @@
 
 #pragma once
 
-#include "../DynamicDialog/DialogSystem/DialogSystem.h"
-#include "../DynamicDialog/DialogSystem/CriterionList.h"
-#include "../DynamicDialog/Characters/DialogCharacter.h"
-
 #include "GameFramework/Actor.h"
 #include "TaggedObject.generated.h"
 
@@ -26,15 +22,21 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
 
 
-	UFUNCTION(BlueprintPure, Category = "Tags")
+	UFUNCTION(BlueprintPure, Category = "Object")
 	bool HasBeenUsed();
 
-	UFUNCTION(BlueprintCallable, Category = "Tags")
-	void Use(ADialogCharacter* user);
+	UFUNCTION(BlueprintCallable, Category = "Object")
+	void Use();
+
+	UFUNCTION(BlueprintCallable, Category = "Object")
+	FString GetName() const{ return Name; }
 
 private: 
-	UPROPERTY(EditAnywhere, Category = "Tags")
+	UPROPERTY(EditAnywhere, Category = "Object")
 	TArray<FString> ObjectTags;
+
+	UPROPERTY(EditAnywhere, Category = "Object")
+    FString Name;
 
 	bool bHasBeenUsed = false;
 	

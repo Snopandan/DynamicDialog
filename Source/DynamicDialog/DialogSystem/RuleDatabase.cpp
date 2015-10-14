@@ -10,3 +10,11 @@ RuleDatabase::RuleDatabase()
 RuleDatabase::~RuleDatabase()
 {
 }
+
+void RuleDatabase::AddRule(Rule* Rule) {
+	Rules.Add(Rule);
+}
+
+void RuleDatabase::Finalize() {
+	Rules.Sort();
+}
