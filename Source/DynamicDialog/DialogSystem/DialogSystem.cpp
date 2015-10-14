@@ -28,6 +28,16 @@ DialogSystem::DialogSystem()
 	rule4->Add(Criterion::EKey::CHARACTER, "Red");
 	RuleDb->AddRule(rule4);
 
+	Rule* rule6 = new Rule("I'm Blue and I see Bird1");
+	rule6->Add(Criterion::EKey::ON_USE, "Bird1");
+	rule6->Add(Criterion::EKey::CHARACTER, "Blue");
+	RuleDb->AddRule(rule6);
+
+	Rule* rule5 = new Rule("I'm Blue and I see Bird2");
+	rule5->Add(Criterion::EKey::ON_USE, "Bird2");
+	rule5->Add(Criterion::EKey::CHARACTER, "Blue");
+	RuleDb->AddRule(rule5);
+
 	RuleDb->Finalize();
 	UE_LOG(LogTemp, Warning, TEXT("======================"));
 	for (int32 i = 0; i < RuleDb->GetSize(); ++i) {
@@ -42,16 +52,23 @@ DialogSystem::~DialogSystem()
 	delete FactDb;
 }
 
-Response DialogSystem::Query(CriterionList* Context, CriterionList* Character, CriterionList* Memory) {
-
+TArray<Response> DialogSystem::Query(CriterionList* Context, CriterionList* Character, CriterionList* Memory, int32 NumberOfWantedResponses) {
+	TArray<Response> Responses;
+	int32 NumberOfResponsesFound = 0;
 	Rule* rule;
 	for (int32 i = 0; i < RuleDb->GetSize(); ++i) {
 		rule = RuleDb->GetRule(i);
 		if (MatchRule(rule, Context, Character, Memory)) {
-			return rule->GetResponse();
+			NumberOfResponsesFound++;
+			Responses.Add(rule->GetResponse());
+
+			if (NumberOfResponsesFound >= NumberOfWantedResponses) {
+				break;
+			}
+			
 		}
 	}
-	return Response("", false);
+	return Responses;
 }
 
 bool DialogSystem::MatchRule(Rule* rule, CriterionList* Context, CriterionList* Character, CriterionList* Memory) {

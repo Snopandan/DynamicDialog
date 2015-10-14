@@ -41,13 +41,32 @@ FString ADialogCharacter::UseObject(ATaggedObject* Obj) {
 	CriterionList Context;
 	Context.AddCriterion(Criterion::EKey::ON_USE, Obj->GetName());
 	Context.AddCriterion(Criterion::EKey::CHARACTER, Name);
-	Response rep = Dialog.Query(&Context, &Status, &Memory);
-	if (rep.IsValid()) {
-		return rep.GetLine();
+	TArray<Response> rep = Dialog.Query(&Context, &Status, &Memory);
+
+
+	if (rep.Num() != 0) {
+		return rep[0].GetLine();
 		//UE_LOG(DidalogCharacterLog, Log, TEXT("%s: %s"), *Name, *Line);
 		//UE_LOG(LogTemp, Warning, TEXT("%s: %s"), *Name, *Line);
 	}
 
 	return TEXT("");
+}
+
+TArray<FString> ADialogCharacter::UseObjectAsPlayer(ATaggedObject* Obj, int32 NumberOfResponses) {
+	Obj->Use();
+
+	CriterionList Context;
+	Context.AddCriterion(Criterion::EKey::ON_USE, Obj->GetName());
+	Context.AddCriterion(Criterion::EKey::CHARACTER, Name);
+	TArray<Response> rep = Dialog.Query(&Context, &Status, &Memory, NumberOfResponses);
+
+	TArray<FString> rtr;
+
+	for (int32 i = 0; i < rep.Num(); ++i) {
+		rtr.Add(rep[i].GetLine());
+	}
+
+	return rtr;
 }
 

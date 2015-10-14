@@ -18,8 +18,8 @@ class DYNAMICDIALOG_API DialogSystem
 public:
 	DialogSystem();
 	~DialogSystem();
-
-	Response Query(CriterionList* Context, CriterionList* Character, CriterionList* Memory);
+	
+	TArray<Response> Query(CriterionList* Context, CriterionList* Character, CriterionList* Memory, int32 NumberOfWantedResponses = 1);
 
 private:
 

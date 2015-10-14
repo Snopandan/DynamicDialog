@@ -34,6 +34,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Tags")
 	virtual FString UseObject(ATaggedObject* Obj);
+
+	UFUNCTION(BlueprintCallable, Category = "Tags")
+	virtual TArray<FString> UseObjectAsPlayer(ATaggedObject* Obj, int32 NumberOfResponses);
 private:
 	UPROPERTY(EditAnywhere)
 	FString  Name;
