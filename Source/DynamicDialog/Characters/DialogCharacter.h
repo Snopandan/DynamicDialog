@@ -33,7 +33,7 @@ public:
 	virtual FString GetName() { return Name; }
 
 	UFUNCTION(BlueprintCallable, Category = "Tags")
-	virtual void UseObject(ATaggedObject* Obj);
+	virtual FString UseObject(ATaggedObject* Obj);
 private:
 	UPROPERTY(EditAnywhere)
 	FString  Name;

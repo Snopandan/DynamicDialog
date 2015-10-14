@@ -35,7 +35,7 @@ void ADialogCharacter::SetupPlayerInputComponent(class UInputComponent* InputCom
 
 }
 
-void ADialogCharacter::UseObject(ATaggedObject* Obj) {
+FString ADialogCharacter::UseObject(ATaggedObject* Obj) {
 	Obj->Use();
 
 	CriterionList Context;
@@ -43,9 +43,11 @@ void ADialogCharacter::UseObject(ATaggedObject* Obj) {
 	Context.AddCriterion(Criterion::EKey::CHARACTER, Name);
 	Response rep = Dialog.Query(&Context, &Status, &Memory);
 	if (rep.IsValid()) {
-		FString Line = rep.GetLine();
-		//UE_LOG(DialogCharacterLog, Log, TEXT("%s: %s"), *Name, *Line);
-		UE_LOG(LogTemp, Warning, TEXT("%s: %s"), *Name, *Line);
+		return rep.GetLine();
+		//UE_LOG(DidalogCharacterLog, Log, TEXT("%s: %s"), *Name, *Line);
+		//UE_LOG(LogTemp, Warning, TEXT("%s: %s"), *Name, *Line);
 	}
+
+	return TEXT("");
 }
 
